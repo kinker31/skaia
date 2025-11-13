@@ -36,68 +36,15 @@ int a11y_invul_colormap = 1;
 void AccessibilitySettings(TXT_UNCAST_ARG(widget), void *user_data)
 {
     txt_window_t *window;
-
     window = TXT_NewWindow("Accessibility");
-
     TXT_SetWindowHelpURL(window, WINDOW_HELP_URL);
-
-    TXT_AddWidget(window,
-                    TXT_NewCheckBox("Flickering Sector Lighting",
-                                    &a11y_sector_lighting));
-
-    if (gamemission == doom)
-    {
-        TXT_AddWidget(window,
-                        TXT_NewCheckBox("Weapon Flash Lighting",
-                                        &a11y_weapon_flash));
-    } 
-    else if (gamemission == heretic)
-    {
-        TXT_AddWidget(window,
-                        TXT_NewCheckBox("Gauntlet & Torch Flash",
-                                        &a11y_weapon_flash));
-    }
-    else if (gamemission == hexen)
-    {
-        TXT_AddWidget(window,
-                        TXT_NewCheckBox("Torch Flash",
-                                        &a11y_weapon_flash));
-    }
-  
-    if (gamemission != strife)
-    {
-        TXT_AddWidgets(window,
-                        TXT_NewCheckBox("Weapon Flash Sprite",
-                                        &a11y_weapon_pspr),
-                        TXT_NewCheckBox("Palette Changes",
-                                        &a11y_palette_changes),                                      
-                        NULL);
-    }
-
-    if (gamemission == doom || gamemission == heretic)
-    {
-        TXT_AddWidget(window,
-                        TXT_NewCheckBox("Invulnerability Colormap",
-                                        &a11y_invul_colormap));
-    } 
-
-    if (gamemission == hexen)
-    {
-        TXT_AddWidget(window,
-                        TXT_NewCheckBox("Ultimate Weapon Palette",
-                                        &a11y_weapon_palette));
-    }
-
-    if (gamemission != strife)
-    {
-        TXT_SetTableColumns(window, 2);
-
-        TXT_AddWidgets(window,
-                        TXT_NewLabel("Extra Lighting"),
-                        TXT_NewSpinControl(&a11y_extra_lighting, 0, 8),
-                        NULL);
-    }
-
+    TXT_AddWidget(window, TXT_NewCheckBox("Flickering Sector Lighting",  &a11y_sector_lighting));
+    TXT_AddWidgets(window, TXT_NewCheckBox("Weapon Flash Sprite", &a11y_weapon_pspr),
+    TXT_NewCheckBox("Palette Changes", &a11y_palette_changes), NULL);
+    TXT_AddWidget(window, TXT_NewCheckBox("Invulnerability Colormap", &a11y_invul_colormap));
+    TXT_AddWidget(window, TXT_NewCheckBox("Weapon Flash Lighting", &a11y_weapon_flash));
+    TXT_SetTableColumns(window, 2);
+    TXT_AddWidgets(window, TXT_NewLabel("Extra Lighting"), TXT_NewSpinControl(&a11y_extra_lighting, 0, 8), NULL);
 }
 
 void BindAccessibilityVariables(void)

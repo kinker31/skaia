@@ -1,12 +1,5 @@
 #ifdef DOOM
 #define DEFAULT_IWAD   doom2.wad
-#elif HERETIC
-#define DEFAULT_IWAD   heretic.wad
-#elif HEXEN
-#define DEFAULT_IWAD   hexen.wad
-#elif STRIFE
-#define DEFAULT_IWAD   strife1.wad
-#endif
 # LONG_GAME_NAME installation
 
 These are instructions for how to install and set up LONG_GAME_NAME
@@ -52,25 +45,13 @@ following names:
 |  IWAD                      | Game                            |
 | -------------------------- | ------------------------------- |
 #if DOOM
-|  doom1.wad                 | Shareware Doom                  |
 |  doom.wad                  | Registered / Ultimate Doom      |
 |  doom2.wad                 | Doom 2                          |
 |  tnt.wad                   | Final Doom: TNT: Evilution      |
 |  plutonia.wad              | Final Doom: Plutonia Experiment |
-|  chex.wad                  | Chex Quest                      |
 |  freedoom1.wad             | Freedoom: Phase 1               |
 |  freedoom2.wad             | Freedoom: Phase 2               |
 |  freedm.wad                | FreeDM                          |
-#endif
-#if HERETIC
-|  heretic1.wad              | Shareware Heretic               |
-|  heretic.wad               | Registered / Commercial Heretic |
-#endif
-#if HEXEN
-|  hexen.wad                 | Hexen                           |
-#endif
-#if STRIFE
-|  strife1.wad (+voices.wad) | Strife                          |
 #endif
 
 #if DOOM
@@ -91,18 +72,6 @@ The Doom games are available to purchase for download on Steam
 (https://store.steampowered.com/), all releases containing the classic
 games including Doom 3: BFG Edition are supported.
 #endif
-#if HERETIC
-Heretic is available to purchase for download on Steam
-(https://store.steampowered.com/).
-#endif
-#if HEXEN
-Hexen and its expansion pack are available to purchase for download on
-Steam (https://store.steampowered.com/).
-#endif
-#if STRIFE
-Strife: Veteran Edition is available to purchase for download on Steam
-(https://store.steampowered.com/).
-#endif
 #if !_WIN32
 For Steam on Linux, you need to enable “Steam Play” for all titles in
 order to install the games.  You may do this from the Steam menu,
@@ -118,43 +87,9 @@ system, look in the Steam directory (usually within “Program Files”),
 under the “steamapps/common” path.
 #endif
 
-#if DOOM || STRIFE
-The Doom and Strife: Veteran Edition games are available for purchase
-on GOG.com (https://www.gog.com/).
-#if _WIN32
-LONG_GAME_NAME will autodetect IWADs from the standalone or GOG Galaxy
-installers and you do not need to do anything.
-#else
-The games are only available for Windows, but you may find the IWAD
-files on a Windows or Wine system, typically within the “C:\GOG Games”
-or “C:\Program Files\GOG Galaxy” directories.
 #endif
 
-#endif
-#if DOOM || HERETIC
-Older floppy disk versions are harder to deal with. The easiest way
-to install from floppies is to run the original installer program
-inside an emulator such as DOSbox (https://www.dosbox.com/).
-As an alternative to using an emulator, it is possible to extract the
-files manually. On the install disk(s), you will find several files
-with numbered extensions (eg. “doom_se.1”).
-
-From the command line it is possible to combine these files into a
-single large file, using a command similar to the following:
-
-#if _WIN32
-   copy doom_se.1+doom_se.2+doom_se.3+doom_se.4+doom_se.5 doom_se.lzh
-#else
-   cat doom_se.1 doom_se.2 doom_se.3 doom_se.4 doom_se.5 > doom_se.lzh
-#endif
-
-The resulting file is an LHA archive file, and it can be extracted
-using an LHA archive tool (there is one available for almost every
-operating system).
-
-#endif
 # Running the game
-
 #if __MACOSX__
 Once you have an IWAD file, you can specify its location within the
 graphical launcher program.  Click the “Configure...” button, and then
@@ -250,19 +185,6 @@ line parameter to specify the Chex Quest IWAD file:
 #if DOOM
 LONG_GAME_NAME requires a version 1.9 IWAD file.  Generally, if you
 install a recent version of Doom you should have a version 1.9 IWAD.
-#elif HERETIC
-LONG_GAME_NAME requires a version 1.2 (Shareware) or version 1.3
-(Shadow of the Serpent Riders) IWAD file.  Generally, if you install a
-recent version of Heretic you should have a version 1.2 or 1.3 IWAD.
-#elif HEXEN
-LONG_GAME_NAME requires a version 1.1 IWAD file.  Generally, if you
-install a recent version of Hexen you should have a version 1.1 IWAD.
-#elif STRIFE
-LONG_GAME_NAME requires a version 1.2 IWAD file.  Generally, if you
-install a recent version of Strife you should have a version 1.2 IWAD.
-Please note that Strife version 1.3 does not update the IWAD, if your
-version.txt file says “STRIFE(TM) VERSION 1.3”, you are still good.
-#endif
 However, if you are installing from a very old CD version or from
 floppy disks, you might find you have an older version.
 
@@ -278,12 +200,6 @@ version, the following sites have the patches:
   * http://www.doom2.net/doom2/utils.html
   * http://www.gamers.org/pub/idgames/idstuff/doom
   * http://www.gamers.org/pub/idgames/idstuff/doom2
-#elif HERETIC
-  * http://www.gamers.org/pub/idgames/idstuff/heretic
-#elif HEXEN
-  * http://www.gamers.org/pub/idgames/idstuff/hexen
-#elif STRIFE
-  * http://www.gamers.org/pub/idgames/roguestuff
 #endif
 
 Please see the

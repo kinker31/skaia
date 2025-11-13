@@ -194,9 +194,6 @@ static void ConfigExtraKeys(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
     txt_window_t *window;
     txt_scrollpane_t *scrollpane;
     txt_table_t *table;
-    boolean extra_keys = gamemission == heretic
-                      || gamemission == hexen
-                      || gamemission == strife;
 
     window = TXT_NewWindow("Extra keyboard controls");
 
@@ -206,16 +203,9 @@ static void ConfigExtraKeys(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
 
     TXT_SetColumnWidths(table, 21, 9);
 
-    if (extra_keys || 1) // Crispy
-    {
-        // When we have extra controls, a scrollable pane must be used.
-
         scrollpane = TXT_NewScrollPane(0, 13, table);
         TXT_AddWidget(window, scrollpane);
 
-
-        if (gamemission == doom)
-        {
         AddSectionLabel(table, "View", false);
 
         AddKeyControl(table, "Look up [*]", &key_lookup);
@@ -230,95 +220,6 @@ static void ConfigExtraKeys(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
         AddKeyControl(table, "Toggle always run", &key_toggleautorun);
         AddKeyControl(table, "Toggle vert. mouse", &key_togglenovert);
         AddKeyControl(table, "Quick Reverse", &key_reverse);
-        }
-        else
-        {
-        AddSectionLabel(table, "View", false);
-
-        AddKeyControl(table, "Look up", &key_lookup);
-        AddKeyControl(table, "Look down", &key_lookdown);
-        AddKeyControl(table, "Center view", &key_lookcenter);
-
-        AddSectionLabel(table, "Movement", false);
-        AddKeyControl(table, "Move Forward (alt.)", &key_alt_up);
-        AddKeyControl(table, "Move Backward (alt.)", &key_alt_down);
-        AddKeyControl(table, "Strafe Left (alt.)", &key_alt_strafeleft);
-        AddKeyControl(table, "Strafe Right (alt.)", &key_alt_straferight);
-        AddKeyControl(table, "Toggle always run", &key_toggleautorun);
-        AddKeyControl(table, "Toggle vert. mouse", &key_togglenovert);
-        AddKeyControl(table, "Quick Reverse", &key_reverse);
-        }
-
-        if (gamemission == heretic || gamemission == hexen)
-        {
-            AddSectionLabel(table, "Flying", true);
-
-            AddKeyControl(table, "Fly up", &key_flyup);
-            AddKeyControl(table, "Fly down", &key_flydown);
-            AddKeyControl(table, "Fly center", &key_flycenter);
-        }
-
-        if (gamemission != doom)
-        {
-        AddSectionLabel(table, "Inventory", true);
-
-        AddKeyControl(table, "Inventory left", &key_invleft);
-        AddKeyControl(table, "Inventory right", &key_invright);
-        }
-
-        if (gamemission == strife)
-        {
-            AddKeyControl(table, "Home", &key_invhome);
-            AddKeyControl(table, "End", &key_invend);
-            AddKeyControl(table, "Query", &key_invquery);
-            AddKeyControl(table, "Drop", &key_invdrop);
-            AddKeyControl(table, "Show weapons", &key_invpop);
-            AddKeyControl(table, "Show mission", &key_mission);
-            AddKeyControl(table, "Show keys", &key_invkey);
-            AddKeyControl(table, "Use", &key_invuse);
-            AddKeyControl(table, "Use health", &key_usehealth);
-        }
-        else
-        if (gamemission == heretic || gamemission == hexen)
-        {
-            AddKeyControl(table, "Use artifact", &key_useartifact);
-        }
-
-        if (gamemission == heretic)
-        {
-            AddSectionLabel(table, "Artifacts", true);
-
-            AddKeyControl(table, "Quartz Flask", &key_arti_quartz);
-            AddKeyControl(table, "Mystic Urn", &key_arti_urn);
-            AddKeyControl(table, "Timebomb", &key_arti_bomb);
-            AddKeyControl(table, "Tome of Power", &key_arti_tome);
-            AddKeyControl(table, "Ring of Invincibility ", &key_arti_ring);
-            AddKeyControl(table, "Chaos Device", &key_arti_chaosdevice);
-            AddKeyControl(table, "Shadowsphere", &key_arti_shadowsphere);
-            AddKeyControl(table, "Wings of Wrath", &key_arti_wings);
-            AddKeyControl(table, "Torch", &key_arti_torch);
-            AddKeyControl(table, "Morph Ovum", &key_arti_morph);
-        }
-
-        if (gamemission == hexen)
-        {
-            AddSectionLabel(table, "Artifacts", true);
-
-            AddKeyControl(table, "One of each", &key_arti_all);
-            AddKeyControl(table, "Quartz Flask", &key_arti_health);
-            AddKeyControl(table, "Flechette", &key_arti_poisonbag);
-            AddKeyControl(table, "Disc of Repulsion", &key_arti_blastradius);
-            AddKeyControl(table, "Chaos Device", &key_arti_teleport);
-            AddKeyControl(table, "Banishment Device", &key_arti_teleportother);
-            AddKeyControl(table, "Porkalator", &key_arti_egg);
-            AddKeyControl(table, "Icon of the Defender",
-                          &key_arti_invulnerability);
-        }
-    }
-    else
-    {
-        TXT_AddWidget(window, table);
-    }
 
     AddSectionLabel(table, "Weapons", extra_keys);
 

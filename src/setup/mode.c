@@ -69,33 +69,6 @@ static mission_config_t mission_configs[] =
         PROGRAM_PREFIX "doom.cfg",
         PROGRAM_PREFIX "doom"
     },
-    {
-        "Heretic",
-        heretic,
-        IWAD_MASK_HERETIC,
-        "heretic",
-        "heretic.cfg",
-        PROGRAM_PREFIX "heretic.cfg",
-        PROGRAM_PREFIX "heretic"
-    },
-    {
-        "Hexen",
-        hexen,
-        IWAD_MASK_HEXEN,
-        "hexen",
-        "hexen.cfg",
-        PROGRAM_PREFIX "hexen.cfg",
-        PROGRAM_PREFIX "hexen"
-    },
-    {
-        "Strife",
-        strife,
-        IWAD_MASK_STRIFE,
-        "strife",
-        "strife.cfg",
-        PROGRAM_PREFIX "strife.cfg",
-        PROGRAM_PREFIX "strife"
-    }
 };
 
 static GameSelectCallback game_selected_callback;
@@ -171,21 +144,6 @@ void InitBindings(void)
     M_BindWeaponControls();
     M_BindMapControls();
     M_BindMenuControls();
-
-    if (gamemission == heretic || gamemission == hexen)
-    {
-        M_BindHereticControls();
-    }
-
-    if (gamemission == hexen)
-    {
-        M_BindHexenControls();
-    }
-
-    if (gamemission == strife)
-    {
-        M_BindStrifeControls();
-    }
 
     // All other variables
 
@@ -344,8 +302,11 @@ void SetupMission(GameSelectCallback callback)
     // @arg <game>
     //
     // Specify the game to configure the settings for.  Valid
-    // values are 'doom', 'heretic', 'hexen' and 'strife'.
+    // values are 'doom'.
     //
+
+	//TODO: I think I can jettison more of this functionality since Doom's gonna be
+	//the only intended IWAD(s) in play here.
 
     p = M_CheckParm("-game");
 

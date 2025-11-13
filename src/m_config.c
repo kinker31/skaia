@@ -332,7 +332,6 @@ static default_t	doom_defaults_list[] =
     CONFIG_VARIABLE_INT(mouseb_mouselook),
 
     //!
-    // @game doom heretic hexen strife
     //
     // Quick 180° reverse.
     //
@@ -383,7 +382,6 @@ static default_t	doom_defaults_list[] =
     CONFIG_VARIABLE_INT(joyb_jump),
 
     //!
-    // @game doom heretic hexen
     //
     // Screen size, range 3-11.
     //
@@ -692,8 +690,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(graphical_startup),
 
     //!
-    // @game doom heretic strife
-    //
     // If non-zero, the ENDOOM text screen is displayed when exiting the
     // game. If zero, the ENDOOM screen is not displayed.
     //
@@ -701,8 +697,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(show_endoom),
 
     //!
-    // @game doom strife
-    //
     // If non-zero, a disk activity indicator is displayed when data is read
     // from disk. If zero, the disk activity indicator is not displayed.
     //
@@ -1152,37 +1146,6 @@ static default_t extra_defaults_list[] =
 
     CONFIG_VARIABLE_INT(mouseb_nextweapon),
     
-    //!
-    // @game heretic
-    //
-    // Mouse button to move to the left in the inventory.
-    //
-
-    CONFIG_VARIABLE_INT(mouseb_invleft),
-
-    //!
-    // @game heretic
-    //
-    // Mouse button to move to the right in the inventory.
-    //
-
-    CONFIG_VARIABLE_INT(mouseb_invright),
-
-    //!
-    // @game heretic hexen
-    //
-    // Mouse button to use artifact.
-    //
-
-    CONFIG_VARIABLE_INT(mouseb_useartifact),
-
-    //!
-    // @game strife
-    //
-    // Mouse button to use inventory item.
-    //
-
-    CONFIG_VARIABLE_INT(mouseb_invuse),
 
     //!
     // If non-zero, double-clicking a mouse button acts like pressing
@@ -1475,48 +1438,6 @@ static default_t extra_defaults_list[] =
     //
 
     CONFIG_VARIABLE_INT(joyb_nextweapon),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to activate artifact.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_useartifact),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to move left in the inventory.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_invleft),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to move right in the inventory.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_invright),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to fly up.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_flyup),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to fly down.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_flydown),
-
-    //!
-    // @game heretic hexen
-    // Joystick virtual button to center flying.
-    //
-
-    CONFIG_VARIABLE_INT(joyb_flycenter),
 
     //!
     // Key to pause or unpause the game.
@@ -1935,7 +1856,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_KEY(key_multi_msgplayer8),
 
     //!
-    // @game doom heretic hexen strife
     // Quick 180° reverse.
     //
 
@@ -1949,7 +1869,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_KEY(key_toggleautorun),
 
     //!
-    // @game doom heretic
     // Toggle vertical mouse movement.
     //
 
@@ -2035,7 +1954,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_coloredhud),
 
     //!
-    // @game doom, heretic, hexen, strife
     //
     // Draw a crosshair.
     //
@@ -2059,7 +1977,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_crosshairtarget),
 
     //!
-    // @game doom, heretic, hexen
     //
     // Crosshair type.
     //
@@ -2067,7 +1984,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_crosshairtype),
 
     //!
-    // @game heretic, hexen
     //
     // Crosshair color.
     //
@@ -2075,7 +1991,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_crosshaircolor),
 
     //!
-    // @game doom heretic hexen
     //
     // Default difficulty when starting a new game.
     //
@@ -2123,7 +2038,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_flipcorpses),
 
     //!
-    // @game doom heretic hexen
     //
     // Limit framerate to this value in frames per second.
     //
@@ -2147,7 +2061,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_freelook),
 
     //!
-    // @game doom heretic hexen strife
     //
     // Crispy's variable to support intermediate and negative gamma levels.
     //
@@ -2275,7 +2188,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_soundmono),
 
     //!
-    // @game heretic
     //
     // Level Weapon Sounds
     //
@@ -2291,7 +2203,6 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(crispy_statsformat),
 
     //!
-    // @game doom heretic hexen
     //
     // Enable translucency.
     //

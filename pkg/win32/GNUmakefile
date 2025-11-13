@@ -12,10 +12,7 @@ endif
 PANDOC_FLAGS = -f gfm -s --template=default.html5 -H ../style.html
 
 DOOM_ZIP=$(PROGRAM_PREFIX)doom-$(PACKAGE_VERSION)-$(POSTFIX).zip
-HERETIC_ZIP=$(PROGRAM_PREFIX)heretic-$(PACKAGE_VERSION)-$(POSTFIX).zip
-HEXEN_ZIP=$(PROGRAM_PREFIX)hexen-$(PACKAGE_VERSION)-$(POSTFIX).zip
-STRIFE_ZIP=$(PROGRAM_PREFIX)strife-$(PACKAGE_VERSION)-$(POSTFIX).zip
-ZIPS=$(DOOM_ZIP) $(HERETIC_ZIP) $(HEXEN_ZIP) $(STRIFE_ZIP)
+ZIPS=$(DOOM_ZIP)
 
 DLL_FILES=$(TOPLEVEL)/src/SDL.dll                      \
           $(TOPLEVEL)/src/SDL_mixer.dll                \
@@ -27,9 +24,6 @@ $(ZIPS):
 	zip -j -r $@ $</*
 
 $(DOOM_ZIP): staging-doom hook-doom
-$(HERETIC_ZIP): staging-heretic
-$(HEXEN_ZIP): staging-hexen
-$(STRIFE_ZIP): staging-strife hook-strife
 
 # Special hooks to custom modify files for particular games.
 

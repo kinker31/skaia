@@ -10,15 +10,6 @@ IWAD files are named according to the game; the standard names are:
 .I plutonia.wad
 Doom, Doom II, Final Doom
 .TP
-.IR heretic.wad ,\~\c
-.IR hexen.wad ,\~\c
-.I strife.wad
-Heretic, Hexen and Strife (commercial Doom engine games).
-.TP
-.IR hacx.wad ,\~\c
-.I chex.wad
-Hacx and Chex Quest - more obscure games based on the Doom engine.
-.TP
 .IR freedm.wad ,\~\c
 .IR freedoom1.wad ,\~\c
 .I freedoom2.wad

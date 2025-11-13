@@ -157,36 +157,9 @@ static void ConfigExtraButtons(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
     AddMouseControl(buttons_table, "Strafe on", &mousebstrafe);
     AddMouseControl(buttons_table, "Next weapon", &mousebnextweapon);
     AddMouseControl(buttons_table, "Run", &mousebspeed);
-    
-    if (gamemission == heretic || gamemission == hexen)
-    {
-      AddMouseControl(buttons_table, "Quick Reverse", &mousebreverse);
-      AddMouseControl(buttons_table, "Mouselook", &mousebmouselook);
-      AddMouseControl(buttons_table, "Inventory left", &mousebinvleft);
-      AddMouseControl(buttons_table, "Inventory right", &mousebinvright);
-      AddMouseControl(buttons_table, "Use artifact", &mousebuseartifact);
-    }
-
-    if (gamemission == strife) // [crispy]
-    {
-        AddMouseControl(buttons_table, "Quick Reverse", &mousebreverse);
-        AddMouseControl(buttons_table, "Mouselook", &mousebmouselook);
-        AddMouseControl(buttons_table, "Inventory left", &mousebinvleft);
-        AddMouseControl(buttons_table, "Inventory right", &mousebinvright);
-        AddMouseControl(buttons_table, "Use inventory", &mousebinvuse);
-    }
-
-    if (gamemission == hexen || gamemission == strife)
-    {
-        AddMouseControl(buttons_table, "Jump", &mousebjump);
-    }
-
-    if (gamemission == doom) // [crispy]
-    {
-        AddMouseControl(buttons_table, "Quick Reverse", &mousebreverse);
-        AddMouseControl(buttons_table, "Mouse Look [*]", &mousebmouselook);
-        AddMouseControl(buttons_table, "Jump [*]", &mousebjump);
-    }
+    AddMouseControl(buttons_table, "Quick Reverse", &mousebreverse);
+    AddMouseControl(buttons_table, "Mouse Look [*]", &mousebmouselook);
+    AddMouseControl(buttons_table, "Jump [*]", &mousebjump);
 
     TXT_AddWidgets(window,
                    TXT_NewSeparator("Automap"),

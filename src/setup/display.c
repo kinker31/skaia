@@ -202,13 +202,7 @@ static void AdvancedDisplayConfig(TXT_UNCAST_ARG(widget),
     TXT_AddWidgets(window,
         ar_checkbox = TXT_NewCheckBox("Force correct aspect ratio",
                                       &aspect_ratio_correct),
-        TXT_If(gamemission == heretic || gamemission == hexen
-            || gamemission == strife,
-            TXT_NewCheckBox("Graphical startup", &graphical_startup)),
-        TXT_If(gamemission == doom || gamemission == heretic
-            || gamemission == strife,
-            TXT_NewCheckBox("Show ENDOOM screen on exit",
-                            &show_endoom)),
+     TXT_NewCheckBox("Show ENDOOM screen on exit", &show_endoom)),
 #ifdef HAVE_LIBPNG
         TXT_NewCheckBox("Save screenshots in PNG format",
                         &png_screenshots),
@@ -275,20 +269,6 @@ void BindDisplayVariables(void)
     M_BindIntVariable("vga_porch_flash",           &vga_porch_flash);
     M_BindIntVariable("force_software_renderer",   &force_software_renderer);
     M_BindIntVariable("max_scaling_buffer_pixels", &max_scaling_buffer_pixels);
-
-    if (gamemission == doom || gamemission == heretic
-     || gamemission == strife)
-    {
-        M_BindIntVariable("show_endoom",               &show_endoom);
-    }
-
-    if (gamemission == doom || gamemission == strife)
-    {
-        M_BindIntVariable("show_diskicon",             &show_diskicon);
-    }
-
-    if (gamemission == heretic || gamemission == hexen || gamemission == strife)
-    {
-        M_BindIntVariable("graphical_startup",        &graphical_startup);
-    }
+    M_BindIntVariable("show_endoom",               &show_endoom);
+    M_BindIntVariable("show_diskicon",             &show_diskicon);
 }

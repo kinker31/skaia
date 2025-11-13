@@ -30,9 +30,6 @@ See \fB@PROGRAM_SPREFIX@\-doom.cfg\fR(5).
 .SH SEE ALSO
 \fB@PROGRAM_SPREFIX@\-server\fR(6),
 \fB@PROGRAM_SPREFIX@\-setup\fR(6),
-\fB@PROGRAM_SPREFIX@\-heretic\fR(6),
-\fB@PROGRAM_SPREFIX@\-hexen\fR(6),
-\fB@PROGRAM_SPREFIX@\-strife\fR(6)
 .SH AUTHOR
 Chocolate Doom is written and maintained by Simon Howard.
 It is based on the LinuxDoom source code, released by Id Software.

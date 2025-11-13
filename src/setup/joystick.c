@@ -348,10 +348,9 @@ static const joystick_config_t pc_gameport_controller[] =
 {
     {"joystick_x_axis",        0},
     {"joystick_y_axis",        1},
-    // Button configuration is the default as used for Vanilla Doom,
-    // Heretic and Hexen. When playing with a Gravis Gamepad, this
-    // layout should also be vaguely similar to the standard layout
-    // described above.
+    // Button configuration is the default as used for Vanilla Doom.
+    // When playing with a Gravis Gamepad, this layout should
+    // also be vaguely similar to the standard layout described above.
     {"joyb_fire",              0},
     {"joyb_strafe",            1},
     {"joyb_use",               3},
@@ -1252,8 +1251,6 @@ void ConfigJoystick(TXT_UNCAST_ARG(widget), void *user_data)
                    TXT_TABLE_EMPTY,
                    NULL);
 
-    if (gamemission == doom || gamemission == heretic || gamemission == hexen || gamemission == strife) // [crispy]
-    {
         TXT_AddWidgets(window,
                    TXT_NewLabel("Look up/down"),
                    TXT_NewJoystickAxis(&joystick_look_axis,
@@ -1265,7 +1262,6 @@ void ConfigJoystick(TXT_UNCAST_ARG(widget), void *user_data)
                    TXT_TABLE_EMPTY,
                    TXT_TABLE_EMPTY,
                    NULL);
-    }
 
     TXT_AddWidget(window,
         TXT_NewConditional(&use_gamepad, 1,
@@ -1306,13 +1302,6 @@ void ConfigJoystick(TXT_UNCAST_ARG(widget), void *user_data)
     AddJoystickControl(window, "Activate menu", &joybmenu);
 
     AddJoystickControl(window, "Toggle Automap", &joybautomap);
-
-    if (gamemission == heretic || gamemission == hexen)
-    {
-        TXT_AddWidget(window,
-                       TXT_NewButton2("More controls...", MoreControls, NULL));
-        TXT_AddWidget(window, TXT_TABLE_EOL);
-    }
 
     TXT_SignalConnect(joystick_button, "pressed", CalibrateJoystick, window);
     TXT_SetWindowAction(window, TXT_HORIZ_CENTER, TestConfigAction());

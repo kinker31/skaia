@@ -248,19 +248,16 @@ void ConfigSound(TXT_UNCAST_ARG(widget), void *user_data)
         TXT_NewRadioButton("Digital sound effects",
                            &snd_sfxdevice,
                            SNDDEVICE_SB),
-        TXT_If(gamemission == doom || gamemission == heretic
-            || gamemission == hexen,
-            TXT_NewConditional(&snd_sfxdevice, SNDDEVICE_SB,
+        TXT_If(&snd_sfxdevice, SNDDEVICE_SB,
                 TXT_NewHorizBox(
                     TXT_NewStrut(4, 0),
                     TXT_NewCheckBox("Pitch-shifted sounds", &snd_pitchshift),
-                    NULL))),
-        TXT_If(gamemission == strife,
-            TXT_NewConditional(&snd_sfxdevice, SNDDEVICE_SB,
+                    NULL)),
+        TXT_If(&snd_sfxdevice, SNDDEVICE_SB,
                 TXT_NewHorizBox(
                     TXT_NewStrut(4, 0),
                     TXT_NewCheckBox("Show text with voices", &show_talk),
-                    NULL))),
+                    NULL)),
 
         TXT_NewSeparator("Music"),
         TXT_NewRadioButton("Disabled", &snd_musicdevice, SNDDEVICE_NONE),
@@ -389,25 +386,9 @@ void BindSoundVariables(void)
     fsynth_sf_path = M_StringDuplicate("");
 #endif
 
-    // All versions of Heretic and Hexen did pitch-shifting.
-    // Most versions of Doom did not and Strife never did.
-    snd_pitchshift = gamemission == heretic || gamemission == hexen;
+    snd_pitchshift = 0;
 
-    // Default sound volumes - different games use different values.
-
-    switch (gamemission)
-    {
-        case doom:
-        default:
-            sfxVolume = 8;  musicVolume = 8;
-            break;
-        case heretic:
-        case hexen:
-            sfxVolume = 10; musicVolume = 10;
-            break;
-        case strife:
-            sfxVolume = 8;  musicVolume = 13;
-            break;
-    }
+    // Default sound volumes
+    sfxVolume = 8;  musicVolume = 8;  
 }
 

@@ -39,18 +39,10 @@ static const iwad_t iwads[] =
     { "doom.wad",     doom,      retail,     "Doom" },
     { "doom1.wad",    doom,      shareware,  "Doom Shareware" },
     { "doom2f.wad",   doom2,     commercial, "Doom II: L'Enfer sur Terre" },
-    { "chex.wad",     pack_chex, retail,     "Chex Quest" },
     { "hacx.wad",     pack_hacx, commercial, "Hacx" },
     { "freedoom2.wad", doom2,    commercial, "Freedoom: Phase 2" },
     { "freedoom1.wad", doom,     retail,     "Freedoom: Phase 1" },
-    { "freedm.wad",   doom2,     commercial, "FreeDM" },
-    { "rekkrsa.wad",  doom,      retail,     "REKKR" }, // [crispy] REKKR
-    { "rekkrsl.wad",  doom,      retail,     "REKKR: Sunken Land" }, // [crispy] REKKR: Sunken Land (Steam retail)
-    { "heretic.wad",  heretic,   retail,     "Heretic" },
-    { "heretic1.wad", heretic,   shareware,  "Heretic Shareware" },
-    { "hexen.wad",    hexen,     commercial, "Hexen" },
-    //{ "strife0.wad",  strife,    commercial, "Strife" }, // haleyjd: STRIFE-FIXME
-    { "strife1.wad",  strife,    commercial, "Strife" },
+    { "freedm.wad",   doom2,     commercial, "FreeDM" }
 };
 
 boolean D_IsIWADName(const char *name)
@@ -227,46 +219,6 @@ static registry_value_t root_path_keys[] =
         SOFTWARE_KEY "\\GOG.com\\Games\\1413291984",
         "PATH"
     },
-
-    // Strife: Veteran Edition
-
-    {
-        HKEY_LOCAL_MACHINE,
-        SOFTWARE_KEY "\\GOG.com\\Games\\1432899949",
-        "PATH",
-    },
-
-    // Heretic
-
-    {
-        HKEY_LOCAL_MACHINE,
-        SOFTWARE_KEY "\\GOG.com\\Games\\1290366318",
-        "PATH",
-    },
-
-    // Hexen
-
-    {
-        HKEY_LOCAL_MACHINE,
-        SOFTWARE_KEY "\\GOG.com\\Games\\1247951670",
-        "PATH",
-    },
-
-    // Hexen: Deathkings of a Dark Citadel
-
-    {
-        HKEY_LOCAL_MACHINE,
-        SOFTWARE_KEY "\\GOG.com\\Games\\1983497091",
-        "PATH",
-    },
-
-    // Heretic + Hexen Rerelease
-
-    {
-        HKEY_LOCAL_MACHINE,
-        SOFTWARE_KEY "\\GOG.com\\Games\\1776058590",
-        "PATH"
-    },
 };
 
 // Subdirectories of the above install path, where IWADs are installed.
@@ -280,8 +232,6 @@ static char *root_path_subdirs[] =
     "Plutonia",
     "TNT",
     "base\\wads",
-    "dos\\base\\heretic",
-    "dos\\base\\hexen",
 };
 
 // Location where Steam is installed
@@ -301,9 +251,7 @@ static char *steam_install_subdirs[] =
     "steamapps\\common\\doom 2\\finaldoombase",
     "steamapps\\common\\final doom\\base",
     "steamapps\\common\\ultimate doom\\base",
-    "steamapps\\common\\heretic shadow of the serpent riders\\base",
-    "steamapps\\common\\hexen\\base",
-    "steamapps\\common\\hexen deathkings of the dark citadel\\base",
+
 
     // From Doom 3: BFG Edition:
 
@@ -315,17 +263,6 @@ static char *steam_install_subdirs[] =
     "steamapps\\common\\Ultimate Doom\\rerelease",
     "steamapps\\common\\Ultimate Doom\\rerelease\\DOOM_Data\\StreamingAssets",
 
-    // From Heretic + Hexen Rerelease:
-
-    "steamapps\\common\\Heretic + Hexen",
-    "steamapps\\common\\Heretic + Hexen\\base\\heretic",
-    "steamapps\\common\\Heretic + Hexen\\base\\hexen",
-    "steamapps\\common\\Heretic + Hexen\\dos\\base\\heretic",
-    "steamapps\\common\\Heretic + Hexen\\dos\\base\\hexen",
-
-    // From Strife: Veteran Edition:
-
-    "steamapps\\common\\Strife",
 };
 
 #define STEAM_BFG_GUS_PATCHES \
@@ -522,13 +459,6 @@ static void CheckDOSDefaults(void)
     AddIWADDir("\\dooms");              // Shareware versions
     AddIWADDir("\\doomsw");
 
-    AddIWADDir("\\heretic");            // Heretic
-    AddIWADDir("\\hrtic_se");           // Heretic Shareware from Quake disc
-
-    AddIWADDir("\\hexen");              // Hexen
-    AddIWADDir("\\hexendk");            // Hexen Deathkings of the Dark Citadel
-
-    AddIWADDir("\\strife");             // Strife
 }
 
 #endif
@@ -766,15 +696,6 @@ static void AddSteamDirs(void)
     AddIWADPath(steampath, "/Ultimate Doom/base");
     AddIWADPath(steampath, "/Final Doom/base");
     AddIWADPath(steampath, "/DOOM 3 BFG Edition/base/wads");
-    AddIWADPath(steampath, "/Heretic Shadow of the Serpent Riders/base");
-    AddIWADPath(steampath, "/Hexen/base");
-    AddIWADPath(steampath, "/Hexen Deathkings of the Dark Citadel/base");
-    AddIWADPath(steampath, "/Heretic + Hexen");
-    AddIWADPath(steampath, "/Heretic + Hexen/base/heretic");
-    AddIWADPath(steampath, "/Heretic + Hexen/base/hexen");
-    AddIWADPath(steampath, "/Heretic + Hexen/dos/base/heretic");
-    AddIWADPath(steampath, "/Heretic + Hexen/dos/base/hexen");
-    AddIWADPath(steampath, "/Strife");
     free(steampath);
 }
 #endif // __MACOSX__

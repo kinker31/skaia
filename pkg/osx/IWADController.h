@@ -23,7 +23,6 @@
     id iwadSelector;
     id configWindow;
 
-    id chex;
     id doom1;
     id doom2;
     id plutonia;
@@ -32,9 +31,6 @@
     id freedoom2;
     id freedm;
 
-    id heretic;
-    id hexen;
-    id strife;
 }
 
 - (void) closeConfigWindow: (id)sender;
