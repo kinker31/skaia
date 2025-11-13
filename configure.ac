@@ -1,14 +1,11 @@
-AC_INIT(Crispy Doom, 7.1.0,
-        fabian@greffrath.com, crispy-doom)
+AC_INIT(Skaia, 0.0.0, dp223171@gmail.com, skaia)
 
-PACKAGE_SHORTNAME=${PACKAGE_NAME% Doom}
-PACKAGE_SHORTDESC="Limit-removing enhanced-resolution Doom source port"
+PACKAGE_SHORTNAME="Skaia"
+PACKAGE_SHORTDESC="Experimental fork of Crispy Doom"
 PACKAGE_COPYRIGHT="Copyright (C) 1993-2025"
 PACKAGE_LICENSE="GNU General Public License, version 2"
-PACKAGE_MAINTAINER="Fabian Greffrath"
-PACKAGE_URL="http://fabiangreffrath.github.io/crispy-doom"
-PACKAGE_RDNS="io.github.fabiangreffrath"
-PACKAGE_BUGREPORT="https://github.com/fabiangreffrath/crispy-doom/issues"
+PACKAGE_MAINTAINER="matrixDoppelganger"
+PACKAGE_BUGREPORT="https://github.com/kinker31/skaia/issues"
 
 dnl Check for Emscripten environment so we can set necessary environment variables
 AC_ARG_ENABLE(
@@ -324,12 +321,8 @@ Makefile
 man/Makefile
 man/bash-completion/Makefile
 man/bash-completion/doom.template
-man/bash-completion/heretic.template
-man/bash-completion/hexen.template
-man/bash-completion/strife.template
 opl/Makefile
 opl/examples/Makefile
-pcsound/Makefile
 pkg/Makefile
 pkg/config.make
 pkg/osx/Info.plist
@@ -341,22 +334,10 @@ src/Doom.metainfo.xml
 src/Doom.desktop
 src/Doom_Screensaver.desktop
 src/doom/Makefile
-src/heretic-res.rc
-src/Heretic.metainfo.xml
-src/Heretic.desktop
-src/heretic/Makefile
-src/hexen-res.rc
-src/Hexen.metainfo.xml
-src/Hexen.desktop
-src/hexen/Makefile
 src/setup-res.rc
 src/setup/Makefile
 src/setup/Setup.desktop
 src/setup/setup-manifest.xml
-src/strife-res.rc
-src/Strife.metainfo.xml
-src/Strife.desktop
-src/strife/Makefile
 textscreen/Makefile
 textscreen/examples/Makefile
 textscreen/fonts/Makefile

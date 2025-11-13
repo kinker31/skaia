@@ -1,7 +1,7 @@
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 cmake_minimum_required(VERSION 3.7.2)
-project("Crispy Doom" VERSION 7.1.0 LANGUAGES C)
+project("Skaia" VERSION 7.1.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -11,10 +11,10 @@ set(top_builddir ${CMAKE_CURRENT_BINARY_DIR})
 
 # AC_INIT variables
 set(PACKAGE_NAME "${PROJECT_NAME}")
-set(PACKAGE_TARNAME "crispy-doom")
+set(PACKAGE_TARNAME "skaia")
 set(PACKAGE_VERSION "${PROJECT_VERSION}")
 set(PACKAGE_STRING "${PROJECT_NAME} ${PROJECT_VERSION}")
-set(PACKAGE_BUGREPORT "https://github.com/fabiangreffrath/crispy-doom/issues")
+set(PACKAGE_BUGREPORT "https://github.com/kinker31/skaia/issues")
 
 string(REGEX REPLACE " Doom$" "" PACKAGE_SHORTNAME "${PACKAGE_NAME}")
 set(PACKAGE_COPYRIGHT "Copyright (C) 1993-2025")
@@ -95,11 +95,9 @@ set(PROGRAM_PREFIX "${PROGRAM_SPREFIX}-")
 configure_file(cmake/config.h.cin config.h)
 
 configure_file(src/doom-res.rc.in src/doom-res.rc)
-configure_file(src/heretic-res.rc.in src/heretic-res.rc)
-configure_file(src/hexen-res.rc.in src/hexen-res.rc)
+
 configure_file(src/setup-res.rc.in src/setup-res.rc)
 configure_file(src/setup/setup-manifest.xml.in src/setup/setup-manifest.xml)
-configure_file(src/strife-res.rc.in src/strife-res.rc)
 
 foreach(SUBDIR textscreen opl pcsound src)
     add_subdirectory("${SUBDIR}")
