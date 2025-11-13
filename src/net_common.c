@@ -445,9 +445,6 @@ boolean NET_ValidGameSettings(GameMode_t mode, GameMission_t mission,
     if (settings->skill < sk_noitems || settings->skill > sk_nightmare)
         return false;
 
-    if (!D_ValidGameVersion(mission, settings->gameversion))
-        return false;
-
     if (!D_ValidEpisodeMap(mission, mode, settings->episode, settings->map))
         return false;
 

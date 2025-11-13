@@ -95,48 +95,6 @@ int D_GetNumEpisodes(GameMission_t mission, GameMode_t mode)
     return episode - 1;
 }
 
-// Table of valid versions
-
-static struct {
-    GameMission_t mission;
-    GameVersion_t version;
-} valid_versions[] = {
-    { doom,     exe_doom_1_2 },
-    { doom,     exe_doom_1_5 },
-    { doom,     exe_doom_1_666 },
-    { doom,     exe_doom_1_7 },
-    { doom,     exe_doom_1_8 },
-    { doom,     exe_doom_1_9 },
-    { doom,     exe_ultimate },
-    { doom,     exe_final },
-    { doom,     exe_final2 },
-
-};
-
-boolean D_ValidGameVersion(GameMission_t mission, GameVersion_t version)
-{
-    int i;
-
-    // All Doom variants can use the Doom versions.
-
-    if (mission == doom2 || mission == pack_plut || mission == pack_tnt
-     || mission == pack_nerve || mission == pack_master)
-    {
-        mission = doom;
-    }
-
-    for (i=0; i<arrlen(valid_versions); ++i) 
-    {
-        if (valid_versions[i].mission == mission 
-         && valid_versions[i].version == version)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 // Does this mission type use ExMy form, rather than MAPxy form?
 
 boolean D_IsEpisodeMap(GameMission_t mission)
@@ -152,7 +110,6 @@ boolean D_IsEpisodeMap(GameMission_t mission)
         case pack_plut:
         case pack_nerve:
         case pack_master:
-        case strife:
         default:
             return false;
     }

@@ -153,9 +153,6 @@ void D_ProcessEvents (void)
     }
 }
 
-
-
-
 //
 // D_Display
 //  draw current display, possibly wiping it from the previous
@@ -946,7 +943,7 @@ void D_IdentifyVersion(void)
 
     // Make sure gamemode is set up correctly
 
-    if (logical_gamemission == doom)
+    if (gamemission == doom)
     {
         // Doom 1.  But which version?
 
@@ -996,7 +993,7 @@ void D_IdentifyVersion(void)
 
 static void D_SetGameDescription(void)
 {
-    if (logical_gamemission == doom)
+    if (gamemission == doom)
     {
         // Doom 1.  But which version?
 
@@ -1031,23 +1028,23 @@ static void D_SetGameDescription(void)
         {
             gamedescription = GetGameName("Freedoom: Phase 2");
         }
-        else if (logical_gamemission == doom2)
+        else if (gamemission == doom2)
         {
             gamedescription = GetGameName("DOOM 2: Hell on Earth");
         }
-        else if (logical_gamemission == pack_plut)
+        else if (gamemission == pack_plut)
         {
             gamedescription = GetGameName("DOOM 2: Plutonia Experiment"); 
         }
-        else if (logical_gamemission == pack_tnt)
+        else if (gamemission == pack_tnt)
         {
             gamedescription = GetGameName("DOOM 2: TNT - Evilution");
         }
-        else if (logical_gamemission == pack_nerve)
+        else if (gamemission == pack_nerve)
         {
             gamedescription = GetGameName("DOOM 2: No Rest For The Living");
         }
-        else if (logical_gamemission == pack_master)
+        else if (gamemission == pack_master)
         {
             gamedescription = GetGameName("Master Levels for DOOM 2");
         }
@@ -1122,189 +1119,6 @@ void PrintDehackedBanners(void)
     }
 }
 
-static const struct
-{
-    const char *description;
-    const char *cmdline;
-    GameVersion_t version;
-} gameversions[] = {
-    {"Doom 1.2",             "1.2",        exe_doom_1_2},
-    {"Doom 1.5",             "1.5",        exe_doom_1_5},
-    {"Doom 1.666",           "1.666",      exe_doom_1_666},
-    {"Doom 1.7/1.7a",        "1.7",        exe_doom_1_7},
-    {"Doom 1.8",             "1.8",        exe_doom_1_8},
-    {"Doom 1.9",             "1.9",        exe_doom_1_9},
-    {"Hacx",                 "hacx",       exe_hacx},
-    {"Ultimate Doom",        "ultimate",   exe_ultimate},
-    {"Final Doom",           "final",      exe_final},
-    {"Final Doom (alt)",     "final2",     exe_final2},
-    {"Chex Quest",           "chex",       exe_chex},
-    { NULL,                  NULL,         0},
-};
-
-// Initialize the game version
-
-static void InitGameVersion(void)
-{
-    byte *demolump;
-    char demolumpname[6];
-    int demoversion;
-    int p;
-    int i;
-    boolean status;
-
-    //!
-    // @arg <version>
-    // @category compat
-    //
-    // Emulate a specific version of Doom. Valid values are "1.2", 
-    // "1.5", "1.666", "1.7", "1.8", "1.9", "ultimate", "final", 
-    // "final2", "hacx" and "chex".
-    //
-
-    p = M_CheckParmWithArgs("-gameversion", 1);
-
-    if (p)
-    {
-        for (i=0; gameversions[i].description != NULL; ++i)
-        {
-            if (!strcmp(myargv[p+1], gameversions[i].cmdline))
-            {
-                gameversion = gameversions[i].version;
-                break;
-            }
-        }
-
-        if (gameversions[i].description == NULL)
-        {
-            printf("Supported game versions:\n");
-
-            for (i=0; gameversions[i].description != NULL; ++i)
-            {
-                printf("\t%s (%s)\n", gameversions[i].cmdline,
-                        gameversions[i].description);
-            }
-
-            I_Error("Unknown game version '%s'", myargv[p+1]);
-        }
-    }
-    else
-    {
-        // Determine automatically
-
-        if (gamemission == pack_chex)
-        {
-            // chex.exe - identified by iwad filename
-
-            gameversion = exe_chex;
-        }
-        else if (gamemission == pack_hacx)
-        {
-            // hacx.exe: identified by iwad filename
-
-            gameversion = exe_hacx;
-        }
-        else if (gamemode == shareware || gamemode == registered
-              || (gamemode == commercial && gamemission == doom2))
-        {
-            // original
-            gameversion = exe_doom_1_9;
-
-            // Detect version from demo lump
-            for (i = 1; i <= 3; ++i)
-            {
-                M_snprintf(demolumpname, 6, "demo%i", i);
-                if (W_CheckNumForName(demolumpname) > 0)
-                {
-                    demolump = W_CacheLumpName(demolumpname, PU_STATIC);
-                    demoversion = demolump[0];
-                    W_ReleaseLumpName(demolumpname);
-                    status = true;
-                    switch (demoversion)
-                    {
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
-                            gameversion = exe_doom_1_2;
-                            break;
-                        case 106:
-                            gameversion = exe_doom_1_666;
-                            break;
-                        case 107:
-                            gameversion = exe_doom_1_7;
-                            break;
-                        case 108:
-                            gameversion = exe_doom_1_8;
-                            break;
-                        case 109:
-                            gameversion = exe_doom_1_9;
-                            break;
-                        default:
-                            status = false;
-                            break;
-                    }
-                    if (status)
-                    {
-                        break;
-                    }
-                }
-            }
-        }
-        else if (gamemode == retail)
-        {
-            gameversion = exe_ultimate;
-        }
-        else if (gamemode == commercial)
-        {
-            // Final Doom: tnt or plutonia
-            // Defaults to emulating the first Final Doom executable,
-            // which has the crash in the demo loop; however, having
-            // this as the default should mean that it plays back
-            // most demos correctly.
-
-            gameversion = exe_final;
-        }
-    }
-
-    // Deathmatch 2.0 did not exist until Doom v1.4
-    if (gameversion <= exe_doom_1_2 && deathmatch == 2)
-    {
-        deathmatch = 1;
-    }
-
-    // The original exe does not support retail - 4th episode not supported
-
-    if (gameversion < exe_ultimate && gamemode == retail)
-    {
-        gamemode = registered;
-    }
-
-    // EXEs prior to the Final Doom exes do not support Final Doom.
-
-    if (gameversion < exe_final && gamemode == commercial
-     && (gamemission == pack_tnt || gamemission == pack_plut))
-    {
-        gamemission = doom2;
-    }
-}
-
-void PrintGameVersion(void)
-{
-    int i;
-
-    for (i=0; gameversions[i].description != NULL; ++i)
-    {
-        if (gameversions[i].version == gameversion)
-        {
-            printf("Emulating the behavior of the "
-                   "'%s' executable.\n", gameversions[i].description);
-            break;
-        }
-    }
-}
-
 // Function called at exit to display the ENDOOM screen
 
 static void D_Endoom(void)
@@ -1344,59 +1158,6 @@ static void LoadIwadDeh(void)
         // valid DEHACKED lumps, so ignore errors and just continue if this
         // is an old IWAD.
         DEH_LoadLumpByName("DEHACKED", false, true);
-    }
-
-    else // [crispy]
-    // If this is the HACX IWAD, we need to load the DEHACKED lump.
-    if (gameversion == exe_hacx)
-    {
-        if (!DEH_LoadLumpByName("DEHACKED", true, false))
-        {
-            I_Error("DEHACKED lump not found.  Please check that this is the "
-                    "Hacx v1.2 IWAD.");
-        }
-    }
-
-    else // [crispy]
-    // Chex Quest needs a separate Dehacked patch which must be downloaded
-    // and installed next to the IWAD.
-    if (gameversion == exe_chex)
-    {
-        char *chex_deh = NULL;
-        char *dirname;
-
-        // Look for chex.deh in the same directory as the IWAD file.
-        dirname = M_DirName(iwadfile);
-        chex_deh = M_StringJoin(dirname, DIR_SEPARATOR_S, "chex.deh", NULL);
-        free(dirname);
-
-        // If the dehacked patch isn't found, try searching the WAD
-        // search path instead.  We might find it...
-        if (!M_FileExists(chex_deh))
-        {
-            free(chex_deh);
-            chex_deh = D_FindWADByName("chex.deh");
-        }
-
-        // Still not found?
-        if (chex_deh == NULL)
-        {
-            I_Error("Unable to find Chex Quest dehacked file (chex.deh).\n"
-                    "The dehacked file is required in order to emulate\n"
-                    "chex.exe correctly.  It can be found in your nearest\n"
-                    "/idgames repository mirror at:\n\n"
-                    "   themes/chex/chexdeh.zip");
-        }
-
-        if (!DEH_LoadFile(chex_deh))
-        {
-            I_Error("Failed to load chex.deh needed for emulating chex.exe.");
-        }
-    }
-    // [crispy] try anyway...
-    else if (W_CheckNumForName("DEHACKED") != -1)
-    {
-        DEH_LoadLumpByName("DEHACKED", true, true);
     }
 
     if (IsFrenchIWAD())
@@ -1785,7 +1546,7 @@ void D_DoomMain (void)
 
         // common auto-loaded files for all Doom flavors
 
-        if (gamemission < pack_chex && gamevariant != freedoom)
+        if (gamevariant != freedoom)
         {
             autoload_dir = M_GetAutoloadDir("doom-all", true);
             if (autoload_dir != NULL)

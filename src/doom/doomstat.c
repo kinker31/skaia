@@ -29,7 +29,3 @@ GameVariant_t   gamevariant = vanilla;
 
 // Set if homebrew PWAD stuff has been added.
 boolean	modifiedgame;
-
-
-
-

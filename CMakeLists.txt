@@ -99,6 +99,6 @@ configure_file(src/doom-res.rc.in src/doom-res.rc)
 configure_file(src/setup-res.rc.in src/setup-res.rc)
 configure_file(src/setup/setup-manifest.xml.in src/setup/setup-manifest.xml)
 
-foreach(SUBDIR textscreen opl pcsound src)
+foreach(SUBDIR textscreen opl src)
     add_subdirectory("${SUBDIR}")
 endforeach()
