@@ -21,13 +21,8 @@ stamp-h1
 tags
 \#*\#
 DOOM*.png
-HTIC*.png
-HEXEN*.png
-STRIFE*.png
 DOOM*.pcx
-HTIC*.pcx
-HEXEN*.pcx
-STRIFE*.pcx
+
 
 # CMake-specific ignores
 /.vs
