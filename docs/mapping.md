@@ -15,6 +15,32 @@ Without Bit 31 Set: [0][0][00000000][00000000][00000000000000]
 
 With Bit 31 Set: [1][00000000][00000000][000000000000000]
 
+Generic Door action will open, wait for a bit, then close!
+
+|Number|Action|Parameter 1|Parameter 2|
+|-|-|-|-|
+|1|DR Door Generic|Open Speed|Stay Open Delay|
+|2|D1 Door Open|Open Speed|Conditions?|
+|3|DR Locked Generic|Lock Type|Open/Close Speed|
+|4|D1 Locked Door Open|Lock Type|Open Speed|
+|5|SR Door Generic|||
+|6|S1 Door Open Only|||
+|7|S1 Locked Door Open|||
+|8|GR Door Generic|||
+|9|G1 Door Open|||
+|10|WR Door Generic|||
+|11|W1 Door Open|||
+|12|W1 Door Close|||
+|13|W1 Door Generic|||
+|14|W1 Locked Door Open|||
+|15||||
+|16||||
+|17||||
+|18||||
+|19||||
+|20||||
+|21||||
+
 ## Linedef Flags
 Don't stray too far from vanilla for this? I'll be honest, I don't know what I plan to do with this one. I'll come up with something later.
 
@@ -29,31 +55,32 @@ Sector bit layout is as follows:
 
 * Byte 0: Special Sector actions (more info in table)
 * Byte 1: Sector Lighting (Blink 0.5, Glow 1s)
-* Bute 2: Sector Damage (-5, -10, -20, instakill)
+* Byte 2: Sector Damage (-5, -10, -20, instakill)
 * Byte 3: Sector Scrolling (Direction, Speed, Move Things)
 
 [00000000][00000000][00000000][00000000]
 
 I don't know if the other bytes will be in a dropdown, or if more fancy bit manipulation will be used.
 
-|Number|Special                                         |
-|------|------------------------------------------------|
-|0     |Nothing (default)                               |
-|1     |Use SKY2 Texture                                |
-|2     |Use SKY3 Texture                                |
-|3     |Use SKY4 Texture                                |
-|4     |Secret Sector                                   |
-|5     |Jump Pad (Damage Byte Controls Jump Height)     |
-|6     |Exit Level (Damage Byte Controls Kept Inventory)|
-|7     |Exit to Secret Level (Same mechanic as 6)       |
-|8     |Custom COLORMAP (Use Upper Texture)             |
-|9     |Lower Player/Monster Height (Deep Liquid)       |
-|10    |Low Friction Sector (A Bit Slippery)            |
-|11    |Very Low Friction Sector (VERY Slippery)        |
-|12    |High Friction Sector (Marshy Mud)               |
-|13    |Very High Friction Sector (Sticky Tar)          |
-|14    |Reverse Controls                                |
-
+|Number|Special|
+|-|-|
+|0|Nothing (default)|
+|1|Use SKY2 Texture|
+|2|Use SKY3 Texture|
+|3|Use SKY4 Texture|
+|4|Secret Sector|
+|5|Jump Pad (Damage Byte Controls Jump Height)|
+|6|Exit Level (Damage Byte Controls Kept Inventory)|
+|7|Exit to Secret Level (Same mechanic as 6)|
+|8|Custom COLORMAP (Use Upper Texture)|
+|9|Lower Player/Monster Height (Deep Liquid)|
+|10|Low Friction Sector (A Bit Slippery)|
+|11|Very Low Friction Sector (VERY Slippery)|
+|12|High Friction Sector (Marshy Mud)|
+|13|Very High Friction Sector (Sticky Tar)|
+|14|Reverse Controls|
+|15|Door Close After *n * 35* seconds (Damage Controls Time)|
+|16|Door Generic After *n * 35* seconds (Damage Controls Time)|
 
 ## Mapthings
 
