@@ -1,6 +1,6 @@
 # Generalized Skaia Roadmap
 
-##First Orders
+## First Orders
 * Completely jettison anything realted to Heretic and Hexen; Some related code might be re-introduced if need be, but this port will be *only* for Doom goinf forwards. Chex Quest and HacX will not be supported either, as much as I like Chex Quest.
 * Get rid of pre-1.9 excecutable compatibility, strict demo support isn't something I'm going to be aiming for going forwards.
 * Move anything related to the Crispy Doom setup excecutable into another in-game menu, kinda like what Boom does.

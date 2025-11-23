@@ -1,4 +1,4 @@
-#Derse Codepointer Suite
+# Derse Codepointer Suite
 All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or at least some form of it, is also supported, so you don't need to worry about having to knife exiting monsters/decorations/weapons just to make your stuff work. All MBF21 codepointers and below should be supported too, but some of them might have different parameters.
 
 ## Monster-Related Codepointers
@@ -17,7 +17,7 @@ All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or a
 |                        |                                                                                         |                                                           |
 
 
-##Weapon-Related Codepointers
+## Weapon-Related Codepointers
 
 |Codepointer Name  |Basic Description|Parameters (if specified)|
 |------------------|-----------------|-------------------------|
@@ -32,7 +32,7 @@ All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or a
 |                  |                 |                         |
 |                  |                 |                         |
 
-##Jump and JumpIf States
+## Jump and JumpIf States
 
 |Codepointer Name    |Basic Description|Parameters (if specified)|
 |--------------------|-----------------|-------------------------|
@@ -47,7 +47,7 @@ All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or a
 |A_JumpIfMapVar      |                 |                         |
 |                    |                 |                         |
 
-##Other States
+## Other States
 
 |Codepointer Name|Basic Description                         |Parameters (if specified)|
 |----------------|------------------------------------------|-------------------------|
@@ -63,7 +63,7 @@ All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or a
 |                |                                          |                         |
 
 
-##Attributes and Other Crap
+## Attributes and Other Crap
 * __uint projectileDice__: Modified the damage multiplier projectiles use.
 * __uint damageOffset__: After damage calculations, adds *n* points of damage.
 * __uint {respawnTime|respawnLives}__: Controls respawn mechanics on Nightmare (or custom difficulty), should be similar to id24.

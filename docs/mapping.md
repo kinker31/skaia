@@ -1,8 +1,8 @@
-#Prospit Mapping Format
+# Prospit Mapping Format
 
 Follows the vanilla mapping formula of "one action per sector", but wth small bits and bobs taken from MBF21 as need be. I don't know if reserved linedefs will stay reserved. I don't plan on following id24 convention either, so id Software's reserved linedefs will not apply here.
 
-##Linedef Specials
+## Linedef Specials
 
 Lindef bit layout is as follows:
 
@@ -15,16 +15,16 @@ Without Bit 31 Set: [0][0][00000000][00000000][00000000000000]
 
 With Bit 31 Set: [1][00000000][00000000][000000000000000]
 
-##Linedef Flags
+## Linedef Flags
 Don't stray too far from vanilla for this? I'll be honest, I don't know what I plan to do with this one. I'll come up with something later.
 
-##Linedef Scripting
+## Linedef Scripting
 Should probably borrow from Hexen ACS? Or at least try not to stray too far from general ACS convention. Making someone have to compile fifteen seperate toolchains for a Doom Map isn't what one would call epic.
 
 More info will come on that when I find the time.
 
 
-##Sector Special
+## Sector Special
 Sector bit layout is as follows:
 
 * Byte 0: Special Sector actions (more info in table)
@@ -55,7 +55,7 @@ I don't know if the other bytes will be in a dropdown, or if more fancy bit mani
 |14    |Reverse Controls                                |
 
 
-##Mapthings
+## Mapthings
 
 * Pusher/Puller Thing: Should work like Boom
 * Ambient Sound Loop(s): Should work like Heretic
