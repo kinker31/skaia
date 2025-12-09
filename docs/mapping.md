@@ -11,18 +11,24 @@ Lindef bit layout is as follows:
 * Bit 13 - 10: General purpouse argument for linedef special.
 * Bit 9 - 0: Linedef Special Action (e.g Open Door, Activate Lift)
 
-Without Bit 15 Set: [0][0][0000][0000000000]
+Without Bit 15 Set: `[0][0][0000][0000000000]`
 
-With Bit 15 Set: [1][0000][00000000000]
+With Bit 15 Set: `[1][0000][00000000000]`
 
 Generic Door Action will open, wait for a bit, then close.
 Bit Layout for Parameter Types:
 
-* Door Parameter: [NO_DELAY|SHORT_DELAY|DEFAULT|LONG_DELAY], [SLOW|NORMAL|FAST|TURBO] 
-* Lock Type: [ANY|RED|YELLOW|BLUE], [KEEP|REMOVE|THREE|SIX] (bit combos like 0110/0111 require all three/six keys and consume them on use)
+* Door Parameter: `[NO_DELAY|SHORT_DELAY|DEFAULT|LONG_DELAY], [SLOW|NORMAL|FAST|TURBO]`
+* Lock Type: `[ANY|RED|YELLOW|BLUE], [KEEP|REMOVE|THREE|SIX]` (bit combos like 0110/0111 require all three/six keys and consume them on use)
 * Lift Parameter: Same as Door Parameter
-* Floor Target: [NEAREST|NEXT|HIGHEST|LOWEST], [NO_CHANGE|CHANGE_TEXTURE|CHANGE_SPECIAL|CHANGE_ALL]
-* 
+* Floor Target: `[NEAREST|NEXT|HIGHEST|LOWEST], [NO_CHANGE|CHANGE_TEXTURE|CHANGE_SPECIAL|CHANGE_ALL]`
+* Donut Parameter: `WALK_OR_SWITCH, [???]`
+* Light Parameter: `[LIGHT_LEVEL], [NORMAL|BLINK|FLICKER|GLOW] `
+* Crusher Parameter: `LOWER_ONLY, SPEED, [5|10|15|20]`
+* Stair Parameter: `DIRECTION, TEXTURE_CHANGE, [SLOW|NORMAL|FAST|TURBO]`
+* Exit Parameter: `[SECRET_EXIT], [RESET_HEALTH], [RESET_AMMO], [RESET_WEAPONS]` (Pistol Start exit would be x111)
+* Teleswitch Parameter: `INSTANT_ENTRY, TELEPORT_FOG, [???]`
+* Teleport Parameter: `ALLOW_MONSTERS, DELAYED_ENTRY, TELEPORT_FOG, KEEP_MOMENTUM`
 
 |Number|Action|Parameter|
 |-|-|-|
@@ -44,7 +50,7 @@ Bit Layout for Parameter Types:
 |16|WR Lift Lower/Raise|Lift Speed|
 |17|S1 Start Perpetual Lift|Lift Speed|
 |18|W1 Start Perpetual Lift|Lift Speed|
-|19|(S1\W1) Donut|Donut Parameter|
+|19|[SW]1 Donut|Donut Parameter|
 |20|SR Floor Lower|Floor Target|
 |21|S1 Floor Lower|Floor Target|
 |22|WR Floor Lower|Floor Target|
@@ -57,7 +63,33 @@ Bit Layout for Parameter Types:
 |29|S1 Light Change|Light Parameter|
 |30|WR Light Change|Light Parameter|
 |31|W1 Light Change|Light Parameter|
-|32768 - 34815|Activate Script #1 - #2048|General-Purpose Parameter|
+|32|S1 Crusher Start|Crusher Parameter|
+|33|S1 Crusher Stop|Unused|
+|34|SR Crusher Start|Crusher Parameter|
+|35|SR Crusher Stop|Unused|
+|36|W1 Crusher Start|Crusher Parameter|
+|37|W1 Crusher Stop|Unused|
+|38|WR Crusher Start|Crusher Parameter|
+|39|WR Crusher Stop|Unused|
+|40|Scroll Texture Left|Speed?|
+|41|Scroll Texture Right|Speed?|
+|42|Scroll Texture Up|Speed?|
+|43|Scroll Texture Down|Speed?|
+|44|S1 Build Stairs|Stair Parameter|
+|45|W1 Build Stairs|Stair Parameter|
+|46|S1 Teleport Player|Teleswitch Parameter|
+|47|SR Teleport Player|Teleswitch Parameter|
+|48|WR Teleport|Teleport Parameter|
+|49|W1 Teleport|Teleport Parameter|
+|50|S1 Floor Raise By x8|x8 Parameter|
+|51|W1 Floor Raise By x8|x8 Parameter|
+|52|S1 Floor Raise By x64|x64 Parameter|
+|53|W1 Floor Raise By x64|x64 Parameter|
+|54|S1 Exit Level|Exit Parameter|
+|55|W1 Exit Level|Exit Parameter|
+|56|Translucent Midtexture|Factor?|
+|57|Wobbly Texture|Factor?|
+|32768 - 34815|Activate Script #1 - #2048|User Parameter|
 
 ## Linedef Flags
 Don't stray too far from vanilla for this? I'll be honest, I don't know what I plan to do with this one. I'll come up with something later.
@@ -129,18 +161,18 @@ Damage and Lighting can be set independently of sector special.
 |17|Deceleration Floor|Slow Factor|
 |18|Deep Liquid|Liquid 'Depth'|
 |19|Custom Fog Color|Color?|
-|20|End Level when h < 11%|???|
-|21|Phased Light|Sequence Step|
-|22|Modify Gravity|Gravity Paramter|
-|23|Healing Pool|???|
-|24|||
-|25|||
-|26|||
-|27|||
-|28|||
-|29|||
-|30|||
-|31|||
+|20|End Level when h < 11%|Exit Parameter|
+|21|Slow Light/Damage Tick|Slow Factor|
+|22|Fast Light/Damage Tick|Fast Factor|
+|23|Push From Sector Center|Factor?|
+|24|Pull Towards Sector Center|Factor?|
+|25|Instakill Monsters|Instakill Parameter|
+|26|Custom Floor Brightness|Brightness|
+|27|Custom Ceiling Brightness|Brightness|
+|28|Modify Gravity|Gravity Paramter|
+|29|Healing Pool|???|
+|30|Invisible Bridge|Bridge Parameter|
+|31|Solid Sector|Fog Thickness?|
 |32 - 63|User-Defined Sector Special|Parameter|
 
 ## Mapthings

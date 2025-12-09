@@ -4,15 +4,16 @@ This Markdown document serves as a list of changes that I plan to make for Skaia
 * Quash Long Wall Error
 * Mostly just see about implementing Eternity's Cardboard renderer, if possible.
 * Smart sprite clipping
-* 
 
 ## Gameplay Changes
 __Invasion Mode:__
+
 * Similar to Zandronum?
 * Multiplayer needs to be actively supported first
 * Probably not gonna be for a while
 
 __Paranoia Mode:__
+
 * Discovered through intentionally hidden means
 * Monsters move half as fast, but are invisible
 * Projectiles quicky fade out of view

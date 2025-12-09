@@ -3,64 +3,56 @@ All vanilla codepointers, and most of what BEX does is supported. DEHExtra, or a
 
 ## Monster-Related Codepointers
 
-|Codepointer Name        |Basic Description                                                                        |Parameters (if specified)                                  |
-|------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------|
-|A_MonsterProjectile     |Makes an enemy fire a projectile (should work like MBF21)                                |Same as the MBF21 Codepointer                              |
+|Codepointer Name|Basic Description|Parameters (if specified)|
+|-|-|-|
+|A_MonsterProjectile|Makes an enemy fire a projectile (should work like MBF21)|Same as the MBF21 Codepointer|
 |A_MonsterProjectileMulti|Same as the previous codepointer, but lets them fire multiple projectiles in one pointer.|Same as above, uint projectiles, angle spread, angle offset|
-|A_RunScriptAndDie       |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
-|                        |                                                                                         |                                                           |
+|A_RunScriptAndDie|???|???|
+|A_MonsterAura|General purpouse AoE effect codepointer|???|
 
 
 ## Weapon-Related Codepointers
 
-|Codepointer Name  |Basic Description|Parameters (if specified)|
-|------------------|-----------------|-------------------------|
-|A_WeaponHitscan   |                 |                         |
-|A_WeaponProjectile|                 |                         |
-|A_ProjectileShield|                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
-|                  |                 |                         |
+|Codepointer Name|Basic Description|Parameters (if specified)|
+|-|-|-|
+|A_WeaponHitscan|||
+|A_WeaponProjectile|||
+|A_ProjectileShield|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
 
 ## Jump and JumpIf States
 
-|Codepointer Name    |Basic Description|Parameters (if specified)|
-|--------------------|-----------------|-------------------------|
-|A_JumpChance()      |                 |                         |
-|A_JumpIfDifficulty()|                 |                         |
-|A_JumpIfDistance    |                 |                         |
-|A_JumpIfHeathRange  |                 |                         |
-|A_JumpIfHealthAbove |                 |                         |
-|A_JumpIfAfterMap    |                 |                         |
-|A_JumpIfBeforeMap   |                 |                         |
-|A_JumpIfMap         |                 |                         |
-|A_JumpIfMapVar      |                 |                         |
-|                    |                 |                         |
+|Codepointer Name|Basic Description|Parameters (if specified)|
+|-|-|-|
+|A_JumpChance()|||
+|A_JumpIfDifficulty()|||
+|A_JumpIfDistance()|||
+|A_JumpIfHeathRange|||
+|A_JumpIfHealthThresh()||bool highLow, state jumpTo|
+|A_JumpIfMap()|||
+|A_JumpIfMapVar()|||
+|A_|||
 
 ## Other States
 
-|Codepointer Name|Basic Description                         |Parameters (if specified)|
-|----------------|------------------------------------------|-------------------------|
-|A_Accelerate    |Adds or multiplies a projectile's speed.  |bool mode, float factor  |
-|A_Decelerate    |Subtracts or divides a projectile's speed.|bool mode, float factor  |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
-|                |                                          |                         |
+|Codepointer Name|Basic Description|Parameters (if specified)|
+|-|-|-|
+|A_Accelerate|Adds or multiplies a projectile's speed.|bool mode, float factor|
+|A_Decelerate|Subtracts or divides a projectile's speed.|bool mode, float factor|
+|A_ExplodeEx|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
+|A_|||
 
 
 ## Attributes and Other Crap
